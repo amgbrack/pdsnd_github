@@ -7,7 +7,7 @@ Explore US Bikeshare Data
 
 
 ### Description
-This project uses Python to understand U.S. bikeshare data. An interactive environment was created to calculate statistics for a dataset filtered by inputs by the user.
+This project uses Python to understand U.S. bikeshare data. An interactive environment was created to calculate statistics for a dataset filtered by the user.
 
 ### Files used
 chicago.csv
