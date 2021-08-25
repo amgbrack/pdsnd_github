@@ -11,16 +11,10 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 # Here we will ask the user to input a city, month and day for their dataset
 
 def get_filters():
-    """
-    Asks user to specify a city, month, and day to analyze.
 
-    Returns:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
-    """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+
+    # get user input for city (chicago, new york city, washington).
     while True:
       city = input("\nPlease select a city to filter by: New York City, Chicago or Washington\n").lower()
       if city not in ('new york city', 'chicago', 'washington'):
@@ -38,7 +32,6 @@ def get_filters():
       else:
         break
 
-
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
       day = input("\nPlease select a day to filter by: : Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or All for all days.\n").lower()
@@ -53,16 +46,7 @@ def get_filters():
 
 # Here we will create the dataframe based on the selections the user makes in the previous section
 def load_data(city, month, day):
-    """
-    Loads data for the specified city and filters by month and day if applicable.
 
-    Args:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
-    Returns:
-        df - Pandas DataFrame containing city data filtered by month and day
-    """
     # load data into the dataframe
     df = pd.read_csv(CITY_DATA[city])
 
@@ -71,7 +55,7 @@ def load_data(city, month, day):
 
     # extract month and day from Start Time into new columns
     df['month'] = df['Start Time'].dt.month
-    df['day_of_week'] = df['Start Time'].dt.weekday_name
+    df['day_of_week'] = df['Start Time'].dt.day_of_week
     df['hour'] = df['Start Time'].dt.hour
 
     # filter by month
@@ -89,7 +73,6 @@ def load_data(city, month, day):
 
 # Here we will display the statistics about frequent travel times to the user
 def time_stats(df):
-    """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -112,7 +95,6 @@ def time_stats(df):
 
 # Here we will display the statistics about station use to the user
 def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -134,7 +116,6 @@ def station_stats(df):
 
 # Here we will display the statistics about trip duration to the user
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trip duration."""
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
@@ -152,7 +133,6 @@ def trip_duration_stats(df):
 
 # Here we will display the statistics about bikeshare users (if available) to the user
 def user_stats(df):
-    """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
@@ -184,15 +164,15 @@ def user_stats(df):
 
 # Here we ask the user if they want to view the raw data or restart the program
 def raw_data (df):
-    """Displays the filtered data 5 rows at a time"""
+
     print(df.head())
     next = 0
     while True:
-        view_raw_data = input('\nWould you like to view next five row of raw data? Enter yes or no.\n')
+        view_raw_data = input('\nWould you like to view next ten rows of raw data? Enter yes or no.\n')
         if view_raw_data.lower() != 'yes':
             return
-        next = next + 5
-        print(df.iloc[next:next+5])
+        next = next + 10
+        print(df.iloc[next:next+10])
 
 def main():
     while True:
