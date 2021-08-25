@@ -8,7 +8,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-# Here we will ask the user to input a city, month and day to create the dataset
+# Here we will ask the user to input a city, month and day for their dataset
 
 def get_filters():
     """
@@ -51,7 +51,7 @@ def get_filters():
     print('-'*40)
     return city, month, day
 
-# Here we will create the dataset based on the selections the user makes in the previous section
+# Here we will create the dataframe based on the selections the user makes in the previous section
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
@@ -87,7 +87,7 @@ def load_data(city, month, day):
 
     return df
 
-# Here we will calculate statistics based on the dataset
+# Here we will display the statistics about frequent travel times to the user
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -182,7 +182,7 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-# Here we ask the user if they want to view the raw data or restart
+# Here we ask the user if they want to view the raw data or restart the program
 def raw_data (df):
     """Displays the filtered data 5 rows at a time"""
     print(df.head())
