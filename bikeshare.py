@@ -52,7 +52,7 @@ def load_data(city, month, day):
 
     # extract month and day from Start Time into new columns
     df['month'] = df['Start Time'].dt.month
-    df['day_of_week'] = df['Start Time'].dt.weekday_name
+    df['day_of_week'] = df['Start Time'].dt.day_of_week
     df['hour'] = df['Start Time'].dt.hour
 
     # filter by month
@@ -180,7 +180,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         while True:
-            view_raw_data = input('\nWould you like to view first ten rows of raw data? Enter yes or no.\n').lower()
+            view_raw_data = input('\nWould you like to view first five rows of raw data? Enter yes or no.\n').lower()
             if view_raw_data != 'yes':
                 break
             raw_data(df)
