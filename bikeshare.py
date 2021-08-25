@@ -1,3 +1,5 @@
+# This project uses Python to understand U.S. bikeshare data. An interactive environment will be created to calculate statistics for a dataset that will be filtered by the user.
+
 import time
 import pandas as pd
 import numpy as np
@@ -6,6 +8,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+# Here we will ask the user to input a city, month and day to create the dataset
 
 def get_filters():
     """
@@ -48,7 +51,7 @@ def get_filters():
     print('-'*40)
     return city, month, day
 
-
+# Here we will create the dataset based on the selections the user makes in the previous section
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
@@ -84,7 +87,7 @@ def load_data(city, month, day):
 
     return df
 
-
+# Here we will calculate statistics based on the dataset
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
@@ -107,7 +110,7 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
+# Here we will display the statistics about station use to the user
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -129,7 +132,7 @@ def station_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
+# Here we will display the statistics about trip duration to the user
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -147,7 +150,7 @@ def trip_duration_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
+# Here we will display the statistics about bikeshare users (if available) to the user
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
@@ -179,6 +182,7 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+# Here we ask the user if they want to view the raw data or restart
 def raw_data (df):
     """Displays the filtered data 5 rows at a time"""
     print(df.head())
